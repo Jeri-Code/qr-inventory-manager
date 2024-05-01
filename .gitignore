@@ -1,0 +1,43 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+.venv/
+env/
+ENV/
+
+# Environment variables
+.env
+
+# IDE and editors
+.idea/
+.vscode/
+*.swp
+
+# Distribution / packaging
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Cache files
+.cache
+.pycache/
+
+# Test and coverage reports
+.coverage
+.coverage.*
+htmlcov/
+.pytest_cache/
+
+# Docker specific
+docker_volumes/
+*.log
+docker-compose.override.yml
+
+# Operating system files
+.DS_Store
+Thumbs.db
