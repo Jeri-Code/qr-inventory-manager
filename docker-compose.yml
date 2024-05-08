@@ -2,28 +2,34 @@ version: '3.9'
 services:
   db:
     image: mysql:8.4
-    volumes:
-      - db-data:/var/lib/mysql
     environment:
-      MYSQL_ROOT_PASSWORD: password
-      MYSQL_DATABASE: inventorydb
-      MYSQL_USER: user
-      MYSQL_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: inventory_db
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     ports:
-      - "3306:3306"
+      - "3307:3306"
     restart: always
+    volumes:
+    - db-data:/var/lib/mysql
+ 
 
   app:
-    build: .
+    build:
+      context: .
+      dockerfile: DockerFile
     ports:
-      - "5000:5000"
+      - "5001:5000"
     environment:
       FLASK_APP: run.py
       FLASK_ENV: development
-      DATABASE_URL: mysql+pymysql://user:password@db/inventorydb
+      DATABASE_URL: ${DATABASE_URL}
+      SECRET_KEY: ${SECRET_KEY}
     depends_on:
       - db
     restart: always
+    volumes:
+      - .:/code
 
 volumes:
   db-data:
