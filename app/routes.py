@@ -1,3 +1,9 @@
-from flask import Blueprint, request, jsonify
-from . import db
-from .models import InventoryItem
+# app/routes.py
+from flask import Blueprint, jsonify
+
+# Define the blueprint
+main = Blueprint('main', __name__)
+
+@main.route('/')
+def index():
+    return jsonify({"message": "Hello, World!"})
